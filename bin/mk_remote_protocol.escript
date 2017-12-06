@@ -1,5 +1,5 @@
 #!/usr/bin/env escript
-
+%%! -pa ../verx
 %%%
 %%% Generate the remote_protocol_xdr.erl module from
 %%% the libvirt remote_protocol.x file
@@ -68,7 +68,7 @@ generate_xdr(Src, Dst) ->
     XDR = mangle_file(Bin),
 
     ok = file:write_file(Dst ++ "/" ++ File ++ ".x", XDR),
-    
+
     % erpcgen has to be in the output directory
     {ok, Cur} = file:get_cwd(),
     ok = file:set_cwd(Dst),
